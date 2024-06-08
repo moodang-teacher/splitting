@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>splitting.js</title>
+		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap" rel="stylesheet" />
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			body {
+				height: 100vh;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				font: 700 5vw 'Noto Sans KR', sans-serif;
+				line-height: 1.5;
+			}
+
+			/* 특별히 속성선택자만 써야하는 건 아님 */
+			[data-splitting] .char {
+				animation: bounce-in-top 1.5s both;
+				animation-delay: calc(60ms * var(--char-index));
+			}
+
+			@keyframes bounce-in-top {
+				0% {
+					transform: translateY(-500px);
+					animation-timing-function: ease-in;
+					opacity: 0;
+				}
+
+				38% {
+					transform: translateY(0);
+					animation-timing-function: ease-out;
+					opacity: 1;
+				}
+
+				55% {
+					transform: translateY(-65px);
+					animation-timing-function: ease-in;
+				}
+
+				72% {
+					transform: translateY(0);
+					animation-timing-function: ease-out;
+				}
+
+				81% {
+					transform: translateY(-28px);
+					animation-timing-function: ease-in;
+				}
+
+				90% {
+					transform: translateY(0);
+					animation-timing-function: ease-out;
+				}
+
+				95% {
+					transform: translateY(-8px);
+					animation-timing-function: ease-in;
+				}
+
+				100% {
+					transform: translateY(0);
+					animation-timing-function: ease-out;
+				}
+			}
+		</style>
+		<link rel="stylesheet" href="https://unpkg.com/splitting/dist/splitting.css" />
+
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+			referrerpolicy="no-referrer"
+		></script>
+		<script src="https://unpkg.com/splitting/dist/splitting.min.js"></script>
+	</head>
+
+	<body>
+		<!-- https://splitting.js.org/ -->
+
+		<h1 data-splitting>단순하게 살아라.</h1>
+
+		<script>
+			Splitting();
+
+			// 1. css, js 연결
+
+			// 2. 요소에 data-splitting 속성 적용
+			// data-splitting : 기본값, 글자로 쪼개기
+
+			// 3. 초기화 : Splitting();
+			//    : 요소검사기로 쪼개진 요소를 확인해보자.
+
+			// 4. css animation 만들기
+			//    : https://animista.net/
+
+			// 5. animation 적용
+			// css에서 [data-splitting] .char 정의 추가
+			// 만들거나 선택한 애니메이션 적용
+			// animation: bounce-in-top 1.5s both;
+			// animation-delay: calc(60ms * var(--char-index));
+		</script>
+	</body>
+</html>
